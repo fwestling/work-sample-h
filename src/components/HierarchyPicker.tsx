@@ -5,7 +5,7 @@ type Props = {
   /** Organisation to be looking at */
   organisationId: Organisation["id"];
   /** Entity to be looking at */
-  entityId: Entity["id"];
+  entityId?: Entity["id"];
   /** Callback for when a part of the hierarchy is clicked */
   onClick: (level: HierarchyNode) => void;
 };
