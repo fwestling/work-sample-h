@@ -1,30 +1,53 @@
-# React + TypeScript + Vite
+# Hatch Engineering Technical Test 🛠
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Purpose
 
-Currently, two official plugins are available:
+This is Fred's submission to the Hatch Engineering technical test.  The purpose of this task is to give a sense of my technical ability and how I work with tools that are similar to what Hatch uses.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## The Problem
 
-## Expanding the ESLint configuration
+At Hatch, we need often need to make decisions based on the structure of one of our company's organisational chart. This could be things such as making sure people in certain teams only have access to information they're allowed to see, or notifying the correct people in the hierarchy about the status of roles in teams they oversee.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+As an example, an organisational chart for a given organisation might look something like this:
 
-- Configure the top-level `parserOptions` property like this:
+![Org Chart](https://qualityinspection.org/wp-content/uploads/2014/04/Screen-Shot-2014-05-05-at-10.57.09-am-e1399258713233.png "Org Chart")
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+The problem we have is that within our product, a user needs to be able to input where they or another entity sits within their company's hierarchy. We also need to be able to figure out what users or jobs are a part of a given hierarchy.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Also, no two companies are the same when it comes to structure. Some companies call the first tier of their org chart divisions, some call them areas etc, some have 2 levels of hierarchy some have 5, so we need to be flexible in allowing for multiple structures.
+
+A user can only be in the bottom level of the org chart i.e. they can be in Quality Control but not in Quality.
+
+## The Task
+
+In order to solve this problem, we'd like you to do a few things:
+
+1. Create a **mock** API client that returns a organisations hierarchy like that defined in the section above. (returning static data is fine. Do not build a server, spend the time making the submission represent your view of production quality code, it would be later be replaced by a real remote call).
+    * Your structure should scale from the smallest start-up, all the way to the world's largest organisations.
+2. Build a React Component that we could add to a settings form which would allow a user to select which division they are part of within the companies hierarchy. 
+   - The component doesn't need to save the information externally, but it should pass out the selected level as it would be stored on an entity like a User.
+   - The component should be usable with multiple entities such as a User, Job or piece of equipment.
+   - The component should also accept a level in the hierarchy and render itself accordingly.
+   - Host the component it a test page so we can interact with it.
+3. Provide a method somewhere in your code that given a level in the hierarchy and a list of entities such as a user, it finds all passed entities at or below that level.
+   - Create an example entity for a User that contains where in the hierarchy they sit.
+4. Make sure that your code is unit tested.
+5. Briefly describe how you would persist the Organisational Structure for each company in Postgres, and how you would persist where an entity like a User, a piece of Inventory or a Job sits in the hierarchy.
+   - How would you implement a query to perform #3 with this structure?
+
+Don't worry if you feel as though some of this task is vague, it's been written that way intentionally so that you have the freedom to approach the task however you want. 
+
+Fork this project to a private repository (GitHub won't let you fork if you can't create private repo's, use bitbucket in this case), or start from scratch if you prefer and create a working React app that solves the problem as described above.
+
+### Tips
+ - **We expect the submission to represent your view of production code.**
+ - We are more concerned with UX than UI.
+ - Commit regularly.
+
+## Solution
+
+To represent the variable hierarchy with clearly defined users, I chose to implement a structure where the "Division" of the company can have a parent which is also a Division, and "Team"s can belong inside Divisions.  `Team`s represent the "leaf node", so Users, Jobs or Inventory items can all have `Team` as a parent, but they cannot have `Division` as a parent.
+
+To implement the mock API, I'm using JSON with a wrapper function providing hooks which can easily be replaced by API calls.  I provide at least one example of each entity type.
+
+The component I'm implementing is called `<Hierarchy>`, with an `onSelect` prop which selects the level after clicking.  It takes in a `level` prop which defines the starting point, so the component only renders hierarchy components at or below that level.
