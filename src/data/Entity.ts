@@ -5,7 +5,7 @@ type EntityType = "user" | "job" | "inventory";
 export interface Entity {
 	id: number;
 	name: string;
-	divisionId: Division["id"];
+	teamId: Division["id"];
 	type: EntityType;
 }
 
