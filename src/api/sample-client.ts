@@ -31,6 +31,12 @@ const client: HierarchyApi = {
 			teams.includes(e.teamId),
 		);
 	},
+
+	getEntity: (entityId) => {
+		return SampleData.entities.find(
+			(entity) => entity.id === entityId,
+		) as Entity;
+	},
 };
 
 export default client;

@@ -11,4 +11,6 @@ export default interface HierarchyApi {
 	getHierarchy(organisationId: Organisation["id"]): HierarchyNode[];
 	/** Get all entities (users, jobs, inventory) for a given organisation */
 	getEntities(organisationId: Organisation["id"]): Entity[];
+	/** Get a single entity */
+	getEntity(entityId: Entity["id"]): Entity | undefined;
 }
