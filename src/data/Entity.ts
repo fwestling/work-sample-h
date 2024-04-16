@@ -1,21 +1,24 @@
-import { Team } from "./Hierarchy";
+import type { Division } from "./Hierarchy";
 
-export type User = {
-    id: string;
-    name: string;
-    teamId: Team['id'];
-}
-export type Job = {
-    id: string;
-    name: string;
-    teamId: Team['id'];
-}
-export type Inventory = {
-    id: string;
-    name: string;
-    teamId: Team['id'];
+type EntityType = "user" | "job" | "inventory";
+
+export interface Entity {
+	id: number;
+	name: string;
+	divisionId: Division["id"];
+	type: EntityType;
 }
 
-type Entity = User | Job | Inventory;
+export interface User extends Entity {
+	type: "user";
+}
+
+export interface Job extends Entity {
+	type: "job";
+}
+
+export interface Inventory extends Entity {
+	type: "inventory";
+}
 
 export default Entity;

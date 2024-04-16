@@ -1,19 +1,19 @@
 export interface Organisation {
-    id: string;
-    name: string;
+	id: number;
+	name: string;
 }
 
 export interface Division {
-    organisationId: Organisation['id'];
-    id: string;
-    name: string;
-    parentId: string;
+	organisationId: Organisation["id"];
+	id: number;
+	name: string;
+	parentId: Division["id"];
 }
 
 export interface Team {
-    id: string;
-    name: string;
-    divisionId: string;
+	id: number;
+	name: string;
+	divisionId: Division["id"];
 }
 
-export type HierarchyNode = Organisation | Division | Team; 
+export type HierarchyNode = Organisation | Division | Team;
