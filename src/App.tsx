@@ -23,7 +23,7 @@ function App() {
       {!organisation ? (
         <span>Organisation not defined</span>
       ) : (
-        <div>
+        <div className="column">
           <h3>{organisation.name}</h3>
           <span>Entity to move:</span>
           <EntitySelector
