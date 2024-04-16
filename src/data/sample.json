@@ -1,181 +1,183 @@
 {
-	"organisations": [
-		{
-			"id": 1,
-			"name": "Dunder Mifflin"
-		},
-		{
-			"id": 2,
-			"name": "Vance Refrigeration"
-		}
-	],
-	"divisions": [
-		{
-			"id": 11,
-			"name": "Corporate",
-			"organisationId": 1
-		},
-		{
-			"id": 12,
-			"name": "Scranton Branch",
-			"organisationId": 1
-		},
-		{
-			"id": 13,
-			"name": "Stamford Branch",
-			"organisationId": 1
-		},
-		{
-			"id": 14,
-			"name": "Office",
-			"organisationId": 1
-		},
-		{
-			"id": 15,
-			"name": "Warehouse",
-			"organisationId": 1
-		},
-		{
-			"id": 16,
-			"name": "Sales",
-			"organisationId": 2
-		},
-		{
-			"id": 17,
-			"name": "Shipping",
-			"organisationId": 2
-		}
-	],
-	"teams": [
-		{
-			"id": 101,
-			"name": "Human Resources",
-			"divisionId": 11
-		},
-		{
-			"id": 102,
-			"name": "Accounting",
-			"divisionId": 12
-		},
-		{
-			"id": 103,
-			"name": "Sales",
-			"divisionId": 12
-		},
-		{
-			"id": 104,
-			"name": "Customer Support",
-			"divisionId": 12
-		},
-		{
-			"id": 105,
-			"name": "Reception",
-			"divisionId": 12
-		},
-		{
-			"id": 106,
-			"name": "Sales",
-			"divisionId": 13
-		},
-		{
-			"id": 107,
-			"name": "Customer Support",
-			"divisionId": 13
-		},
-		{
-			"id": 108,
-			"name": "Shipping",
-			"divisionId": 15
-		},
-		{
-			"id": 109,
-			"name": "Marketing",
-			"divisionId": 17
-		},
-		{
-			"id": 110,
-			"name": "Drivers",
-			"divisionId": 15
-		}
-	],
-	"entities": [
-		{
-			"id": 1001,
-			"name": "Michael Scott",
-			"teamId": 103,
-			"type": "user"
-		},
-		{
-			"id": 1002,
-			"name": "Dwight Schrute",
-			"teamId": 103,
-			"type": "user"
-		},
-		{
-			"id": 1003,
-			"name": "Jim Halpert",
-			"teamId": 103,
-			"type": "user"
-		},
-		{
-			"id": 1004,
-			"name": "Pam Beesly",
-			"teamId": 105,
-			"type": "user"
-		},
-		{
-			"id": 1005,
-			"name": "Andy Bernard",
-			"teamId": 106,
-			"type": "user"
-		},
-		{
-			"id": 1006,
-			"name": "Karen Filippelli",
-			"teamId": 106,
-			"type": "user"
-		},
-		{
-			"id": 1007,
-			"name": "Darryl Philbin",
-			"teamId": 108,
-			"type": "user"
-		},
-		{
-			"id": 1008,
-			"name": "Kellie Kapoor",
-			"teamId": 104,
-			"type": "user"
-		},
-		{
-			"id": 1009,
-			"name": "Roy Anderson",
-			"teamId": 108,
-			"type": "user"
-		},
-		{
-			"id": 1010,
-			"name": "Erin Hannon",
-			"teamId": 105,
-			"type": "user"
-		},
-		{
-			"id": 1011,
-			"name": "Toby Flenderson",
-			"teamId": 101,
-			"type": "user"
-		},
-		{
-			"id": 1012,
-			"name": "Bob Vance",
-			"teamId": 108,
-			"type": "user"
-		},
-		{
-			"id": 1013,
-			"name": "Temp",
-			"teamId": 103,
-			"type": "job"
-		}
-	]
+  "organisations": [
+    {
+      "id": 1,
+      "name": "Dunder Mifflin",
+      "slug": "dunder-mifflin"
+    },
+    {
+      "id": 2,
+      "name": "Vance Refrigeration",
+      "slug": "vance-refrigeration"
+    }
+  ],
+  "divisions": [
+    {
+      "id": 11,
+      "name": "Corporate",
+      "organisationId": 1
+    },
+    {
+      "id": 12,
+      "name": "Scranton Branch",
+      "organisationId": 1
+    },
+    {
+      "id": 13,
+      "name": "Stamford Branch",
+      "organisationId": 1
+    },
+    {
+      "id": 14,
+      "name": "Office",
+      "organisationId": 1
+    },
+    {
+      "id": 15,
+      "name": "Warehouse",
+      "organisationId": 1
+    },
+    {
+      "id": 16,
+      "name": "Sales",
+      "organisationId": 2
+    },
+    {
+      "id": 17,
+      "name": "Shipping",
+      "organisationId": 2
+    }
+  ],
+  "teams": [
+    {
+      "id": 101,
+      "name": "Human Resources",
+      "divisionId": 11
+    },
+    {
+      "id": 102,
+      "name": "Accounting",
+      "divisionId": 12
+    },
+    {
+      "id": 103,
+      "name": "Sales",
+      "divisionId": 12
+    },
+    {
+      "id": 104,
+      "name": "Customer Support",
+      "divisionId": 12
+    },
+    {
+      "id": 105,
+      "name": "Reception",
+      "divisionId": 12
+    },
+    {
+      "id": 106,
+      "name": "Sales",
+      "divisionId": 13
+    },
+    {
+      "id": 107,
+      "name": "Customer Support",
+      "divisionId": 13
+    },
+    {
+      "id": 108,
+      "name": "Shipping",
+      "divisionId": 15
+    },
+    {
+      "id": 109,
+      "name": "Marketing",
+      "divisionId": 17
+    },
+    {
+      "id": 110,
+      "name": "Drivers",
+      "divisionId": 15
+    }
+  ],
+  "entities": [
+    {
+      "id": 1001,
+      "name": "Michael Scott",
+      "teamId": 103,
+      "type": "user"
+    },
+    {
+      "id": 1002,
+      "name": "Dwight Schrute",
+      "teamId": 103,
+      "type": "user"
+    },
+    {
+      "id": 1003,
+      "name": "Jim Halpert",
+      "teamId": 103,
+      "type": "user"
+    },
+    {
+      "id": 1004,
+      "name": "Pam Beesly",
+      "teamId": 105,
+      "type": "user"
+    },
+    {
+      "id": 1005,
+      "name": "Andy Bernard",
+      "teamId": 106,
+      "type": "user"
+    },
+    {
+      "id": 1006,
+      "name": "Karen Filippelli",
+      "teamId": 106,
+      "type": "user"
+    },
+    {
+      "id": 1007,
+      "name": "Darryl Philbin",
+      "teamId": 108,
+      "type": "user"
+    },
+    {
+      "id": 1008,
+      "name": "Kellie Kapoor",
+      "teamId": 104,
+      "type": "user"
+    },
+    {
+      "id": 1009,
+      "name": "Roy Anderson",
+      "teamId": 108,
+      "type": "user"
+    },
+    {
+      "id": 1010,
+      "name": "Erin Hannon",
+      "teamId": 105,
+      "type": "user"
+    },
+    {
+      "id": 1011,
+      "name": "Toby Flenderson",
+      "teamId": 101,
+      "type": "user"
+    },
+    {
+      "id": 1012,
+      "name": "Bob Vance",
+      "teamId": 108,
+      "type": "user"
+    },
+    {
+      "id": 1013,
+      "name": "Temp",
+      "teamId": 103,
+      "type": "job"
+    }
+  ]
 }

@@ -14,6 +14,7 @@ describe("API hooks", () => {
     expect(result.current.data).toEqual<Organisation>({
       id: 1,
       name: "Dunder Mifflin",
+      slug: "dunder-mifflin",
     });
   });
 

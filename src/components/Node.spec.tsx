@@ -1,13 +1,15 @@
 // Test the Node component
 
+import { Division } from "@/data/Hierarchy";
 import { render } from "@testing-library/react";
 import Node from "./Node";
 
 describe("Node", () => {
-  const hierarchyNode = {
+  const hierarchyNode: Division = {
     id: 1001,
     name: "Node",
-    children: [],
+    organisationId: 1,
+    parentId: undefined,
   };
 
   it("renders the component", () => {

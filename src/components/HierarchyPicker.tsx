@@ -1,3 +1,4 @@
+import { useEntity, useHierarchy } from "@/api/hooks";
 import type Entity from "@/data/Entity";
 import type { HierarchyNode, Organisation } from "@/data/Hierarchy";
 
@@ -14,8 +15,12 @@ type Props = {
  * The HierarchyPicker renders an organisation's hierarchy
  * and allows navigation of the hierarchy to select a specific team.
  */
-const HierarchyPicker = (props: Props) => {
-  console.log(props);
+const HierarchyPicker = ({ organisationId, entityId, onClick }: Props) => {
+  const { data: hierarchy } = useHierarchy(organisationId);
+  const { data: entity } = useEntity(entityId);
+
+  // Keeps the tests from failing due to TS6133
+  console.log(hierarchy, entity, onClick);
   return <div>HierarchyPicker</div>;
 };
 

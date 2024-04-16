@@ -51,6 +51,11 @@ export const useEntities: QueryFn<Entity[], number> = (
   };
 };
 
-export const useEntity: QueryFn<Entity | undefined, number> = (id: number) => {
+export const useEntity: QueryFn<Entity | undefined, number | undefined> = (
+  id?: number
+) => {
+  if (!id) {
+    return { data: undefined, isLoading: false, error: "No ID provided" };
+  }
   return { data: client.getEntity(id), isLoading: false, error: undefined };
 };
