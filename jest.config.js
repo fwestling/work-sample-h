@@ -11,5 +11,14 @@ export default {
       },
     
     setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+
+    coverageDirectory: "./coverage",
+    collectCoverage: true,
+    collectCoverageFrom: ["src/**/*.{ts,tsx}"],
+    coverageReporters: ["json", "lcov", "text", "clover", "html"],
+    coveragePathIgnorePatterns: [
+      "node_modules",
+      "src/main.tsx",
+    ],
   };
   
