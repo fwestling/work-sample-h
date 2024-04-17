@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import "./App.css";
+import { useOrganisations } from "./api/hooks";
 import client from "./api/sample-client";
 import EntitySelector from "./components/EntitySelector";
 import HierarchyPicker from "./components/HierarchyPicker";
@@ -7,8 +8,9 @@ import Entity from "./data/Entity";
 import type { Organisation, Team } from "./data/Hierarchy";
 
 function App() {
-  const [organisationId] = useState<Organisation["id"]>(1);
+  const [organisationId, setOrganisationId] = useState<Organisation["id"]>(1);
 
+  const { data: organisations } = useOrganisations();
   const [organisation, setOrganisation] = useState<Organisation>();
 
   useEffect(() => {
@@ -33,6 +35,17 @@ function App() {
   return (
     <>
       <h2>Hatch: Move within the hierarchy</h2>
+      <select
+        value={organisationId}
+        onChange={(evt) => setOrganisationId(Number.parseInt(evt.target.value))}
+      >
+        {organisations.map((org) => (
+          <option key={org.id} value={org.id} data-testid="org-option">
+            {org.name}
+          </option>
+        ))}
+      </select>
+
       {!organisation ? (
         <span>Organisation not defined</span>
       ) : (
