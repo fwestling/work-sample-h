@@ -52,3 +52,26 @@ To represent the variable hierarchy with clearly defined users, I chose to imple
 To implement the mock API, I'm using JSON with a wrapper function providing hooks which can easily be replaced by API calls. I provide at least one example of each entity type.
 
 I'm using a recursive renderer, so the organisation structure can be any size or complexity. The component lets the user click through to divisions to narrow down the tree, or select a level to only show nodes at or below that level. If an entity (user, job or inventory item) has been selected, the renderer shows where in the hierarchy that entity currently sits. If an entity is selected and then a `Team` node is clicked, an alert message is used to indicate that this is where the update operation would be called, though it does not currently implement one.
+
+### Demo
+
+To view the solution, clone this repository, build the dependencies (currently uses `pnpm`, but `yarn` or `npm` should work fine), then run the dev script.
+
+```
+pnpm i
+pnpm dev
+```
+
+### Unit testing
+
+Unit tests are implemented using Jest; code coverage is shown below (generated using Github Actions):
+
+![Code Coverage](https://img.shields.io/badge/Code%20Coverage-90%25-success?style=flat)
+
+| Package        | Line Rate           | Branch Rate       | Complexity | Health |
+| -------------- | ------------------- | ----------------- | ---------- | ------ |
+| src            | 73%                 | 33%               | 0          | ➖     |
+| src.api        | 100%                | 100%              | 0          | ✔      |
+| src.components | 84%                 | 71%               | 0          | ✔      |
+| src.data       | 100%                | 100%              | 0          | ✔      |
+| **Summary**    | **90%** (139 / 154) | **76%** (34 / 45) | **0**      | ✔      |
