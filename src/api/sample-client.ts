@@ -13,16 +13,18 @@ const client: HierarchyApi = {
   },
 
   getHierarchy: (organisationId) => {
+    const divisions = SampleData.divisions.filter(
+      (div) => div.organisationId === organisationId
+    );
+    const teams = SampleData.teams.filter((team) =>
+      divisions.map((div) => div.id).includes(team.divisionId)
+    );
     return [
       SampleData.organisations.find(
         (org) => org.id === organisationId
       ) as Organisation,
-      ...(SampleData.divisions.filter(
-        (div) => div.organisationId === organisationId
-      ) as Division[]),
-      ...(SampleData.teams.filter(
-        (team) => team.divisionId === organisationId
-      ) as Team[]),
+      ...(divisions as Division[]),
+      ...(teams as Team[]),
     ];
   },
 

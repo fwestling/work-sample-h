@@ -14,14 +14,22 @@ describe("Node", () => {
 
   it("renders the component", () => {
     const { container } = render(
-      <Node data={hierarchyNode} onClick={() => {}} />
+      <Node
+        data={hierarchyNode}
+        hierarchy={[hierarchyNode]}
+        onClick={() => {}}
+      />
     );
     expect(container).toBeDefined();
   });
 
   it("renders a hierarchy-node", () => {
     const { getByTestId } = render(
-      <Node data={hierarchyNode} onClick={() => {}} />
+      <Node
+        data={hierarchyNode}
+        onClick={() => {}}
+        hierarchy={[hierarchyNode]}
+      />
     );
     const options = getByTestId("hierarchy-node");
     expect(options).toBeDefined();

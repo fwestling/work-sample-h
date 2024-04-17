@@ -20,10 +20,10 @@ export interface Team {
 export type HierarchyNode = Organisation | Division | Team;
 
 export const isOrganisation = (node: HierarchyNode): node is Organisation =>
-  (node as Organisation).slug !== undefined;
+  (node as Organisation)?.slug !== undefined;
 
 export const isDivision = (node: HierarchyNode): node is Division =>
-  (node as Division).organisationId !== undefined;
+  (node as Division)?.organisationId !== undefined;
 
 export const isTeam = (node: HierarchyNode): node is Team =>
-  (node as Team).divisionId !== undefined;
+  (node as Team)?.divisionId !== undefined;

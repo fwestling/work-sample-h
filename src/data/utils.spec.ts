@@ -56,6 +56,71 @@ describe("getLevel utility", () => {
     const level = utils.getLevel(grandchild, [node, child, grandchild]);
     expect(level).toBe(2);
   });
+
+  it("returns 3 for a greatgrandchild node", () => {
+    const node: Organisation = {
+      id: 1001,
+      name: "Node",
+      slug: "node",
+    };
+
+    const child: Division = {
+      id: 1002,
+      name: "Child",
+      parentId: node.id,
+      organisationId: node.id,
+    };
+
+    const grandchild: Division = {
+      id: 1003,
+      name: "Grandchild",
+      parentId: child.id,
+      organisationId: node.id,
+    };
+
+    const greatgrandchild: Team = {
+      id: 1004,
+      name: "Greatgrandchild",
+      divisionId: grandchild.id,
+    };
+
+    const level = utils.getLevel(greatgrandchild, [
+      node,
+      child,
+      grandchild,
+      greatgrandchild,
+    ]);
+    expect(level).toBe(3);
+  });
+
+  it("works without an organisation root node", () => {
+    const child: Division = {
+      id: 1002,
+      name: "Child",
+      parentId: 10,
+      organisationId: 10,
+    };
+
+    const grandchild: Division = {
+      id: 1003,
+      name: "Grandchild",
+      parentId: child.id,
+      organisationId: 10,
+    };
+
+    const greatgrandchild: Team = {
+      id: 1004,
+      name: "Greatgrandchild",
+      divisionId: grandchild.id,
+    };
+
+    const level = utils.getLevel(greatgrandchild, [
+      child,
+      grandchild,
+      greatgrandchild,
+    ]);
+    expect(level).toBe(2);
+  });
 });
 
 describe("getAllBelow utility", () => {

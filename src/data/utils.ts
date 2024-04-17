@@ -17,22 +17,29 @@ export const getLevel = (
   node: HierarchyNode,
   hierarchy: HierarchyNode[]
 ): number => {
-  let level = 0;
-  let currentNode = node;
+  // Since it always increments, we can start at -1
+  let level = -1;
+  let currentNode: HierarchyNode | undefined = node;
   // Once you reach the top of the tree, stop.
-  while (!!currentNode && !isOrganisation(currentNode)) {
+  while (currentNode !== undefined) {
+    if (isOrganisation(currentNode)) {
+      currentNode = undefined;
+      level++;
+      break;
+    }
     if (isDivision(currentNode)) {
       const div = currentNode as Division;
-      if (div.parentId === null)
-        currentNode = hierarchy.find((n) => n.id === div.parentId)!;
-      else currentNode = hierarchy.find((n) => n.id === div.organisationId)!;
-      level++;
-    } else if (isTeam(currentNode)) {
+      let nextNode: HierarchyNode | undefined = undefined;
+      nextNode = hierarchy.find((n) => n.id === div.parentId);
+      if (!nextNode)
+        currentNode = hierarchy.find((n) => n.id === div.organisationId);
+      currentNode = nextNode;
+    } else if (isTeam(currentNode as HierarchyNode)) {
       currentNode = hierarchy.find(
         (n) => n.id === (currentNode as Team).divisionId
       )!;
-      level++;
     }
+    level++;
   }
   return level;
 };
@@ -59,7 +66,12 @@ export const getAllBelow = (
           (isDivision(n) && n.parentId === currentNode.id)
       );
       queue.push(...children);
+    } else if (isOrganisation(currentNode)) {
+      const children = hierarchy.filter(
+        (n) => isDivision(n) && n.organisationId === currentNode.id
+      );
+      queue.push(...children);
     }
   }
-  return nodes;
+  return nodes.filter((x, i, a) => a.indexOf(x) === i);
 };

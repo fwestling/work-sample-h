@@ -15,27 +15,32 @@
     {
       "id": 11,
       "name": "Corporate",
+      "parentId": 1,
       "organisationId": 1
     },
     {
       "id": 12,
       "name": "Scranton Branch",
+      "parentId": 1,
       "organisationId": 1
     },
     {
       "id": 13,
       "name": "Stamford Branch",
+      "parentId": 1,
       "organisationId": 1
     },
     {
       "id": 14,
       "name": "Office",
-      "organisationId": 1
+      "organisationId": 1,
+      "parentId": 12
     },
     {
       "id": 15,
       "name": "Warehouse",
-      "organisationId": 1
+      "organisationId": 1,
+      "parentId": 12
     },
     {
       "id": 16,
@@ -57,17 +62,17 @@
     {
       "id": 102,
       "name": "Accounting",
-      "divisionId": 12
+      "divisionId": 14
     },
     {
       "id": 103,
       "name": "Sales",
-      "divisionId": 12
+      "divisionId": 14
     },
     {
       "id": 104,
       "name": "Customer Support",
-      "divisionId": 12
+      "divisionId": 14
     },
     {
       "id": 105,
