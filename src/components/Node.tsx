@@ -6,7 +6,7 @@ type Props = {
   data: HierarchyNode;
   hierarchy: HierarchyNode[];
   highlightId?: HierarchyNode["id"];
-  onClick: () => void;
+  onClick: (node: HierarchyNode) => void;
 };
 
 const Node = ({ data, hierarchy, highlightId, onClick }: Props) => {
@@ -28,7 +28,7 @@ const Node = ({ data, hierarchy, highlightId, onClick }: Props) => {
     <div data-testid="hierarchy-node" className="node">
       <div className="node-row">
         <button
-          onClick={onClick}
+          onClick={() => onClick(tree[0])}
           className={`${
             isDivision(tree[0])
               ? "division"

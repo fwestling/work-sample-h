@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./App.css";
 import client from "./api/sample-client";
 import EntitySelector from "./components/EntitySelector";
 import HierarchyPicker from "./components/HierarchyPicker";
 import Entity from "./data/Entity";
-import type { Organisation } from "./data/Hierarchy";
+import type { Organisation, Team } from "./data/Hierarchy";
 
 function App() {
   const [organisationId] = useState<Organisation["id"]>(1);
@@ -16,6 +16,19 @@ function App() {
   }, [organisationId]);
 
   const [entity, setEntity] = useState<Entity | undefined>();
+
+  const handleSelect = useCallback(
+    (team: Team) => {
+      if (entity) {
+        if (entity.teamId === team.id)
+          alert(`${entity.name} is already in ${team.name}`);
+        else alert(`Moving ${entity.name} to ${team.name}`);
+      } else {
+        alert("Please select an entity to move.");
+      }
+    },
+    [entity]
+  );
 
   return (
     <>
@@ -38,7 +51,7 @@ function App() {
             organisationId={organisation.id}
           />
           <HierarchyPicker
-            onClick={() => {}}
+            onSelect={handleSelect}
             entityId={entity?.id}
             organisationId={organisation.id}
           />
