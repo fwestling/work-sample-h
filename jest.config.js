@@ -15,7 +15,7 @@ export default {
     coverageDirectory: "./coverage",
     collectCoverage: true,
     collectCoverageFrom: ["src/**/*.{ts,tsx}"],
-    coverageReporters: ["json", "lcov", "text", "clover", "html"],
+    coverageReporters: ["json", "lcov", "text", "clover", "cobertura", "html"],
     coveragePathIgnorePatterns: [
       "node_modules",
       "src/main.tsx",
