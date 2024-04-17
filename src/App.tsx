@@ -25,13 +25,18 @@ function App() {
       ) : (
         <div className="column">
           <h3>{organisation.name}</h3>
+          <p>
+            Use this view to locate an entity within {organisation.name} and
+            move them to another division. <br />
+            Select an entity to see where they are located. <br />
+            Click on another team to move them, or click on a division to filter
+            the hierarchy to just that division.
+          </p>
           <span>Entity to move:</span>
           <EntitySelector
             onSelect={setEntity}
             organisationId={organisation.id}
           />
-          {!entity ? <span>Please select an entity</span> : null}
-
           <HierarchyPicker
             onClick={() => {}}
             entityId={entity?.id}

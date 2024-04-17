@@ -76,7 +76,15 @@
   padding: 8px;
   max-width: 80vw;
   overflow: auto;
+}
 
+.highlight-primary {
+  border: 2px solid red;
+  background-color: lightpink !important;
+}
+
+.highlight-secondary {
+  border: 2px solid red;
 }
 
 .team {
@@ -84,7 +92,11 @@
   color: black;
 }
 
-.division {
+.division { 
   background-color:lightskyblue;
   color: black;
+}
+.organisation {
+  background-color:darkblue;
+  color: white;
 }

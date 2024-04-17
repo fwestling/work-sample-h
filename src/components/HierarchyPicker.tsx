@@ -58,6 +58,7 @@ const HierarchyPicker = ({ organisationId, entityId, onClick }: Props) => {
             data={node}
             hierarchy={hierarchy}
             onClick={() => onClick(node)}
+            highlightId={entity?.teamId}
           />
         ))}
       </div>

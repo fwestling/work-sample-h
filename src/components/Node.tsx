@@ -5,10 +5,11 @@ import { useEffect, useMemo, useState } from "react";
 type Props = {
   data: HierarchyNode;
   hierarchy: HierarchyNode[];
+  highlightId?: HierarchyNode["id"];
   onClick: () => void;
 };
 
-const Node = ({ data, hierarchy }: Props) => {
+const Node = ({ data, hierarchy, highlightId, onClick }: Props) => {
   const [tree, setTree] = useState<HierarchyNode[]>(
     getAllBelow(data, hierarchy)
   );
@@ -27,13 +28,20 @@ const Node = ({ data, hierarchy }: Props) => {
     <div data-testid="hierarchy-node" className="node">
       <div className="node-row">
         <button
-          className={
+          onClick={onClick}
+          className={`${
             isDivision(tree[0])
               ? "division"
               : isTeam(tree[0])
               ? "team"
               : "organisation"
-          }
+          } ${
+            highlightId === tree[0].id
+              ? "highlight-primary"
+              : highlightId && tree.map((t) => t.id).includes(highlightId)
+              ? "highlight-secondary"
+              : ""
+          }`}
         >
           {tree[0].id}: {tree[0].name}
         </button>
@@ -48,7 +56,13 @@ const Node = ({ data, hierarchy }: Props) => {
         {levelNodes
           .filter((t) => t.id !== data.id)
           .map((t) => (
-            <Node data={t} key={t.id} hierarchy={tree} onClick={() => {}} />
+            <Node
+              data={t}
+              key={t.id}
+              hierarchy={tree}
+              onClick={onClick}
+              highlightId={highlightId}
+            />
           ))}
       </div>
     </div>
