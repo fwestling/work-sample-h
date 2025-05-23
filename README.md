@@ -1,12 +1,12 @@
-# Hatch Engineering Technical Test 🛠
+# HE Technical Test 🛠
 
 ## Purpose
 
-This is Fred's submission to the Hatch Engineering technical test. The purpose of this task is to give a sense of my technical ability and how I work with tools that are similar to what Hatch uses.
+This is Fred's submission to the HE technical test. The purpose of this task is to give a sense of my technical ability and how I work with tools that are similar to what HE uses.
 
 ## The Problem
 
-At Hatch, we need often need to make decisions based on the structure of one of our company's organisational chart. This could be things such as making sure people in certain teams only have access to information they're allowed to see, or notifying the correct people in the hierarchy about the status of roles in teams they oversee.
+At HE, we need often need to make decisions based on the structure of one of our company's organisational chart. This could be things such as making sure people in certain teams only have access to information they're allowed to see, or notifying the correct people in the hierarchy about the status of roles in teams they oversee.
 
 As an example, an organisational chart for a given organisation might look something like this:
 
